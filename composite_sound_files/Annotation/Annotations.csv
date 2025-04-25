@@ -1,0 +1,25 @@
+Selection,View,Channel,Begin Time (s),End Time (s),Low Freq (Hz),High Freq (Hz),Species,Record_Segment,Call_time,Bird Sound
+1,Spectrogram 1,1,1,2,,,SLBM,Recording_1_Segment_01,1,Call
+1,Spectrogram 2,1,3,4,,,SLBM,Recording_1_Segment_02,1,Call
+2,Spectrogram 3,1,7,8,,,SLBM,Recording_1_Segment_02,1,Call
+3,Spectrogram 4,1,1,12,,,SLBM,Recording_1_Segment_2,11,Call
+4,Spectrogram 5,1,14,18,,,SLBM,Recording_1_Segment_2,4,Call
+5,Spectrogram 6,1,21,28,,,SLBM,Recording_1_Segment_2,7,Call
+1,Spectrogram 7,1,0,1,,,SLBM,Recording_1_Segment_3,1,Call
+2,Spectrogram 8,1,4,19,,,SLBM,Recording_1_Segment_3,15,Call
+1,Spectrogram 9,1,0,11,,,SLBM,Recording_1_Segment_4,11,Call
+2,Spectrogram 10,1,15,26,,,SLBM,Recording_1_Segment_4,11,Call
+3,Spectrogram 11,1,28,32,,,SLBM,Recording_1_Segment_4,4,Call
+4,Spectrogram 12,1,36,38,,,SLBM,Recording_1_Segment_4,2,Call
+5,Spectrogram 13,1,39,41,,,SLBM,Recording_1_Segment_4,2,Call
+6,Spectrogram 14,1,43,46,,,SLBM,Recording_1_Segment_5,3,Call
+1,Spectrogram 15,1,2,3,,,SLBM,Recording_1_Segment_5,1,Call
+2,Spectrogram 16,1,5,6,,,SLBM,Recording_1_Segment_5,1,Call
+3,Spectrogram 17,1,10,12,,,SLBM,Recording_1_Segment_5,2,Call
+4,Spectrogram 18,1,18,19,,,SLBM,Recording_1_Segment_5,1,Call
+5,Spectrogram 19,1,24,25,,,SLBM,Recording_1_Segment_5,1,Call
+1,Spectrogram 20,1,0,3,,,SLBM,Recording_1_Segment_6,3,Call
+2,Spectrogram 21,1,7,8,,,SLBM,Recording_1_Segment_6,1,Call
+3,Spectrogram 22,1,11,13,,,SLBM,Recording_1_Segment_6,2,Call
+4,Spectrogram 23,1,16,17,,,SLBM,Recording_1_Segment_6,1,Call
+5,Spectrogram 24,1,19,20,,,SLBM,Recording_1_Segment_6,1,Call
