@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 from recall_loss import custom_loss as binary_loss
 from model import BirdNet
 
-species_name = "SLBM"
+species_name = "EATO"
 
 dir_name = os.path.dirname(__file__)
 model_save = pjoin(dir_name, "weights")
