@@ -53,7 +53,7 @@ def collect_coefficients(wpt):
 
 # Pad arrays
 def padding(dataarray, length):
-    padding_size = dataarray.shape[0] % length
+    padding_size = length - (dataarray.shape[0] % length)
     padded_array = np.pad(dataarray,(0, padding_size), mode="constant")
 
     return padded_array.reshape(length, -1)
