@@ -12,11 +12,13 @@ def fix_audio_length_pydub(parent_sound_file_path, max_length):
         for recording_file in os.listdir(pjoin(parent_sound_file_path, recording_no)):
 
             audio = AudioSegment.from_file(pjoin(parent_sound_file_path, recording_no, recording_file))
-            target_length = max_length
+            target_length = max_length + 1
 
             if len(audio) < target_length:
                 silence = AudioSegment.silent(duration=target_length - len(audio))
                 fixed = audio + silence
+                fixed = fixed[:target_length]
+
             else:
                 fixed = audio[:target_length]
 
@@ -38,7 +40,7 @@ def birdgroup_maxlen(parent_sound_file_path):
 
     return max(length_data)
 
-def create_dataset_for_segment(parent_sound_file_path, max_length):
+def create_dataset_for_segment(parent_sound_file_path):
     """args: accepts the folder path which has the recording in order.
     Make sure to only use this function when the wav files are of the exact same size, otherwise, during the conversion to numpy arrays,
     an inhomogeneous error will be thrown."""
@@ -201,7 +203,7 @@ def convert_vocal_column_to_onehot(df_dataset ,np_dataset):
     return annotated_numpy_encoded
 
 if __name__ == "__main__":
-    species_name = "SLBM"
+    species_name = "SLHP"
 
     # Main file
     mpr = os.path.dirname(__file__)
@@ -217,14 +219,15 @@ if __name__ == "__main__":
 
     # Get max length
     max_length = birdgroup_maxlen(parent_sound_file)
+    print(f"Maximum length of all audio files: {max_length}")
 
     # Pad all audio files
-    fix_audio_length_pydub(parent_sound_file, max_length * 1000)
+    #fix_audio_length_pydub(parent_sound_file, max_length * 1000)
 
     # Create features
-    numpy_features = create_dataset_for_segment(parent_sound_file, max_length)
-    print(numpy_features.shape)
-    waveletdecomp.savenumpy(numpy_features_file, numpy_features)
+    #numpy_features = create_dataset_for_segment(parent_sound_file)
+    #print(numpy_features.shape)
+    #waveletdecomp.savenumpy(numpy_features_file, numpy_features)
 
     # Create targets
     combined_targets_numpy_unencoded = np.array(convert_annotatfiles_to_list(parent_sound_file_path=parent_sound_file,
