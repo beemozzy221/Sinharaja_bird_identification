@@ -64,7 +64,7 @@ if uploaded_file is not None and bird_choice:
     else:
         st.success("Valid .wav file uploaded!")
 
-    st.audio(uploaded_file, format='audio/wav/WAV/mp3/MP3')
+    st.audio(uploaded_file)
 
     # Spectrogram Generation
     if st.checkbox("Generate spectrogram?"):
