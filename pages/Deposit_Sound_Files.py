@@ -38,8 +38,8 @@ if sound_files and annotation_file:
     sound_names = {file.name for file in sound_files}
     try:
         df = pd.read_csv(annotation_file)
-        if "filename" in df.columns:
-            annotated_names = set(df["filename"].unique())
+        if "Record_Segment" in df.columns:
+            annotated_names = set(df["Record_Segment"].unique())
             unmatched = annotated_names - sound_names
             if unmatched:
                 st.warning(f"The following files are in the annotation CSV but not uploaded: {unmatched}")
