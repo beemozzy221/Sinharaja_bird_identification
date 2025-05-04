@@ -24,7 +24,7 @@ if entered_password == st.secrets["admin_password"]:
         for filename in os.listdir(annot_folder):
             file_path = os.path.join(annot_folder, filename)
             with open(file_path, "rb") as f:
-                st.download_button(label=f"Download {filename}", data=f, file_name=filename)
+                st.download_button(label=f"Downlosad {filename}", data=f, file_name=filename)
     else:
         st.warning("No annotation files found.")
 
