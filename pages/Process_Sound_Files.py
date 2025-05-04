@@ -52,14 +52,13 @@ st.title("🐦 Bird Sound Identifier")
 available_birds = [os.path.splitext(f)[0] for f in os.listdir(pjoin(mpr, WEIGHTS_DIR)) if f.endswith(".weights.h5")]
 bird_choice = st.multiselect("Select bird(s) to identify", available_birds, default=available_birds[:1])
 
-uploaded_file = st.file_uploader("Upload a WAV file")
+uploaded_file = st.file_uploader(label="Upload a WAV file")
 
 if uploaded_file is not None and bird_choice:
 
-    st.write(uploaded_file.name)
-    st.write("File extension:")
-    st.write(Path(uploaded_file.name).suffix)
-    
+    filename = Path(uploaded_file.name)
+    suffix = filename.suffix.lower()
+
     st.audio(uploaded_file, format='wav/WAV/mp3')
 
     # Spectrogram Generation
