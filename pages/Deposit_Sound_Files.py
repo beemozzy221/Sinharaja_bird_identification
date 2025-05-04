@@ -36,7 +36,7 @@ if annotation_file:
 if sound_files and annotation_file:
     sound_names = {file.name for file in sound_files}
     try:
-        df = pd.read_csv(annotation_file)
+        df = pd.read_csv(annotation_file, header=0)
         if "Record_Segment" in df.columns:
             annotated_names = set(df["Record_Segment"].unique())
             unmatched = annotated_names - sound_names
