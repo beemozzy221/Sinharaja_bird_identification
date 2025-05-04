@@ -54,7 +54,7 @@ bird_choice = st.multiselect("Select bird(s) to identify", available_birds, defa
 uploaded_file = st.file_uploader("Upload a WAV file", type=['wav', 'WAV'])
 
 if uploaded_file is not None and bird_choice:
-    st.audio(uploaded_file, format='audio/wav')
+    st.audio(uploaded_file, format='audio/wav/WAV')
 
     # Spectrogram Generation
     if st.checkbox("Generate spectrogram?"):
