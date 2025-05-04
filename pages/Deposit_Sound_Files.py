@@ -1,5 +1,4 @@
 import os
-
 import streamlit as st
 import pandas as pd
 
@@ -52,6 +51,9 @@ if sound_files and annotation_file:
 
 # Save uploaded audio files
 if sound_files:
+    # Create the folder if it doesn't exist
+    os.makedirs("uploads/audio", exist_ok=True)
+
     for file in sound_files:
         file_path = os.path.join("uploads/audio", file.name)
         with open(file_path, "wb") as f:
@@ -60,6 +62,9 @@ if sound_files:
 
 # Save uploaded annotation file
 if annotation_file:
+    # Create the folder if it doesn't exist
+    os.makedirs("uploads/annotations", exist_ok=True)
+
     ann_path = os.path.join("uploads/annotations", annotation_file.name)
     with open(ann_path, "wb") as f:
         f.write(annotation_file.getbuffer())
