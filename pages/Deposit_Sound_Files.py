@@ -29,6 +29,7 @@ if annotation_file:
     try:
         df = pd.read_csv(annotation_file)
         st.dataframe(df.head())
+        annotation_file.seek(0)
     except Exception as e:
         st.error(f"Failed to read CSV file: {e}")
 
