@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import os
 import model
 import waveletdecomp
+from pathlib import Path
 from os.path import join as pjoin
 
 # --------------CHATGPT GENERATED CODE (with some minor mods)----------------
@@ -54,6 +55,10 @@ bird_choice = st.multiselect("Select bird(s) to identify", available_birds, defa
 uploaded_file = st.file_uploader("Upload a WAV file", type=['wav', 'WAV', 'mp3'])
 
 if uploaded_file is not None and bird_choice:
+
+    st.write(uploaded_file.name)
+    st.write("File extension:")
+    st.write(Path(uploaded_file.name).suffix)
     st.audio(uploaded_file, format='wav/WAV/mp3')
 
     # Spectrogram Generation
