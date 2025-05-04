@@ -1,3 +1,5 @@
+import os
+
 import streamlit as st
 import pandas as pd
 
@@ -47,3 +49,18 @@ if sound_files and annotation_file:
             st.error("Annotation CSV must contain a 'filename' column.")
     except Exception as e:
         st.error(f"CSV processing error: {e}")
+
+# Save uploaded audio files
+if sound_files:
+    for file in sound_files:
+        file_path = os.path.join("uploads/audio", file.name)
+        with open(file_path, "wb") as f:
+            f.write(file.getbuffer())
+        st.success(f"Saved audio: {file.name}")
+
+# Save uploaded annotation file
+if annotation_file:
+    ann_path = os.path.join("uploads/annotations", annotation_file.name)
+    with open(ann_path, "wb") as f:
+        f.write(annotation_file.getbuffer())
+    st.success(f"Saved annotation file: {annotation_file.name}")
