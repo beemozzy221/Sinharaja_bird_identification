@@ -25,7 +25,7 @@ batch_size = 2
 
 
 early_stopping = keras.callbacks.EarlyStopping(
-        monitor="acc", patience=50, restore_best_weights=True
+        monitor="acc", patience=5, restore_best_weights=True
 )
 
 #Initialize the model
@@ -40,14 +40,14 @@ model = BirdNet(
 #Compile the model
 model.compile(
         optimizer=keras.optimizers.Adam(learning_rate= learning_rate),
-        loss=binary_loss(0.6, 0.4, from_logits=True),
+        loss=binary_loss(0.7, 0.3, from_logits=True),
         metrics=[keras.metrics.BinaryAccuracy(name="acc"), "true_positives", "true_negatives", "false_positives", "false_negatives"]
 )
 
 #Train the model
 metrics_logger = callback_metric.MetricsLogger()
 model.fit(
-        shuffle = False,
+        shuffle=True,
         x=bird_features,
         y=bird_targets,
         epochs=epochs,
