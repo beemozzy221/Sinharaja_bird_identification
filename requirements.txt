@@ -137,7 +137,6 @@ python-json-logger==2.0.7
 pytools==2025.1.1
 pytz==2024.1
 PyWavelets==1.8.0
-pywinpty==2.0.13
 PyYAML==6.0.1
 pyzmq==26.0.3
 qtconsole==5.5.2
