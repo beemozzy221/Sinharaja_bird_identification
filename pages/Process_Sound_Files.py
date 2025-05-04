@@ -52,6 +52,7 @@ available_birds = [os.path.splitext(f)[0] for f in os.listdir(pjoin(mpr, WEIGHTS
 bird_choice = st.multiselect("Select bird(s) to identify", available_birds, default=available_birds[:1])
 
 uploaded_file = st.file_uploader("Upload a WAV file", type=['wav', 'WAV', 'mp3'])
+print("Successfully uploaded")
 
 if uploaded_file is not None and bird_choice:
     st.audio(uploaded_file, format='audio/wav/WAV/mp3')
