@@ -10,3 +10,5 @@ can be found in:
 https://drive.google.com/drive/folders/1_1RKyb_hvWy3Th_4gzQ-zmQLfctAOC7a?usp=sharing
 
 Once the folders are placed in the directory, the trainmodel.py should be run to train the model.
+
+Currently for annotated bird features for Sinharaja Forest birds can be found at: https://drive.google.com/drive/folders/1FYy1n2SW3Z-o2lNiODsuYdPFxrUsdcxS
