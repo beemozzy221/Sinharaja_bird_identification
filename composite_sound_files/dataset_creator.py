@@ -4,12 +4,13 @@ import waveletdecomp
 import numpy as np
 from pydub import AudioSegment
 from pandas import read_csv
+from natsort import natsorted
 from os.path import join as pjoin
 from sklearn.preprocessing import MultiLabelBinarizer
 
 def fix_audio_length_pydub(parent_sound_file_path, max_length):
-    for recording_no in os.listdir(parent_sound_file_path):
-        for recording_file in os.listdir(pjoin(parent_sound_file_path, recording_no)):
+    for recording_no in natsorted(os.listdir(parent_sound_file_path)):
+        for recording_file in natsorted(os.listdir(pjoin(parent_sound_file_path, recording_no))):
 
             audio = AudioSegment.from_file(pjoin(parent_sound_file_path, recording_no, recording_file))
             target_length = max_length + 1
@@ -28,8 +29,8 @@ def birdgroup_maxlen(parent_sound_file_path):
     length_data = []
 
     # List all files in the parent recording folder
-    for recording_main in os.listdir(parent_sound_file_path):
-        for recording_file in os.listdir(pjoin(parent_sound_file_path, recording_main)):
+    for recording_main in natsorted(os.listdir(parent_sound_file_path)):
+        for recording_file in natsorted(os.listdir(pjoin(parent_sound_file_path, recording_main))):
             if recording_file.endswith((".WAV", ".wav")):
                 print(f"Found {recording_file} in {parent_sound_file_path}")
 
@@ -48,8 +49,8 @@ def create_dataset_for_segment(parent_sound_file_path):
     wav_decomposed = []
 
     # List all files in the parent recording folder
-    for recording_no in os.listdir(parent_sound_file_path):
-        for recording_file in os.listdir(pjoin(parent_sound_file_path, recording_no)):
+    for recording_no in natsorted(os.listdir(parent_sound_file_path)):
+        for recording_file in natsorted(os.listdir(pjoin(parent_sound_file_path, recording_no))):
             if recording_file.endswith((".WAV", ".wav")):
                 print(f"Found {recording_file} in {recording_no}")
 
@@ -95,11 +96,11 @@ def convert_annotatfiles_to_list(parent_sound_file_path, segment_length, dataset
     #Import dataset
     dataset_df = read_csv(dataset_filepath)
 
-    for recording_file in os.listdir(parent_sound_file_path):
-        for recording_segment in os.listdir(pjoin(parent_sound_file_path, recording_file)):
-            annotation_segment = np.zeros(shape=segment_length, dtype="object")
-
+    for recording_file in natsorted(os.listdir(parent_sound_file_path)):
+        for recording_segment in natsorted(os.listdir(pjoin(parent_sound_file_path, recording_file))):
             if recording_segment.endswith((".WAV", ".wav")):
+                annotation_segment = np.zeros(shape=segment_length, dtype="object")
+
                 print(f"Opened {recording_segment} in {recording_file}")
 
                 rec_name_and_seg = recording_segment.split('.')[0]
@@ -121,7 +122,7 @@ def convert_annotatfiles_to_list(parent_sound_file_path, segment_length, dataset
                         else:
                             annotation_segment[math.floor(row[1]["Begin Time (s)"]) + seconds] += " " + row[1]["Species"]
 
-            recording_data.append(annotation_segment)
+                recording_data.append(annotation_segment)
 
     return recording_data
 
@@ -147,8 +148,8 @@ def annotate_call_sounds_target_specie(parent_sound_file_path, segment_length, d
     #Import dataset
     dataset_df = read_csv(dataset_filepath)
 
-    for recording_file in os.listdir(parent_sound_file_path):
-        for recording_segment in os.listdir(pjoin(parent_sound_file_path, recording_file)):
+    for recording_file in natsorted(os.listdir(parent_sound_file_path)):
+        for recording_segment in natsorted(os.listdir(pjoin(parent_sound_file_path, recording_file))):
             annotation_segment = np.zeros(shape=segment_length, dtype="object")
 
             if recording_segment.endswith((".WAV", ".wav")):
@@ -203,7 +204,7 @@ def convert_vocal_column_to_onehot(df_dataset ,np_dataset):
     return annotated_numpy_encoded
 
 if __name__ == "__main__":
-    species_name = "SLHP"
+    species_name = "SLBM"
 
     # Main file
     mpr = os.path.dirname(__file__)
@@ -238,10 +239,10 @@ if __name__ == "__main__":
     print(specie_targets_numpy_encoded.shape)
 
     # Annotate based on call sounds for target specie
-    call_sound_unencoded = annotate_call_sounds_target_specie(parent_sound_file, max_length,
-                                                              annot_files, species_name)
-    call_sound_encoded = convert_vocal_column_to_onehot(read_csv(annot_files), np.array(call_sound_unencoded))
-    print(call_sound_encoded.shape)
-    waveletdecomp.savenumpy(numpy_targets_vocal_file, np.array(call_sound_encoded))
+    #call_sound_unencoded = annotate_call_sounds_target_specie(parent_sound_file, max_length,
+                                                              #annot_files, species_name)
+    #call_sound_encoded = convert_vocal_column_to_onehot(read_csv(annot_files), np.array(call_sound_unencoded))
+    #print(call_sound_encoded.shape)
+    #waveletdecomp.savenumpy(numpy_targets_vocal_file, np.array(call_sound_encoded))
 
 
