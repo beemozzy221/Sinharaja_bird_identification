@@ -41,7 +41,7 @@ WEIGHTS_DIR = "weights"
 SAMPLE_RATE = 44100
 
 # ========== STREAMLIT APP ==========
-st.title("🐦 Bird Sound Identifidfer")
+st.title("🐦 Bird Sound Identifier")
 
 # Bird selection
 available_birds = [os.path.splitext(f)[0] for f in os.listdir(pjoin(mpr, WEIGHTS_DIR)) if f.endswith(".weights.h5")]
