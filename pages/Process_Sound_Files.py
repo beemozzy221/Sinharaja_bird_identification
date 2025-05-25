@@ -29,14 +29,10 @@ def predict_format(audio_array):
     return predict_data
 
 # Parameters (replace with actual values or compute dynamically)
-time_steps = 100
-features = 32
-coeffs = 8
-channels = 1
 dropout_rate = 0.1
-hidden_units = [128, 128]
+hidden_units = [512, 512]
 lstm_hidden_units = [128,128]
-filter_size = [32, 32]
+filter_size = [32, 32, 32]
 
 # ========== CONFIG ==========
 cpr = os.path.dirname(__file__)

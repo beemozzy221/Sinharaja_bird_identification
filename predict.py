@@ -12,9 +12,9 @@ dir_name = os.path.dirname(__file__)
 data_dir = pjoin(dir_name, 'predict')
 model_load = pjoin(dir_name, "weights", f'{filter_species_name}model.weights.h5')
 dropout_rate = 0.1
-hidden_units = [128, 128]
+hidden_units = [512, 512]
 lstm_hidden_units = [128,128]
-filter_size = [32, 32]
+filter_size = [32, 32, 32]
 packets_to_display = 10
 
 predict_data = []
