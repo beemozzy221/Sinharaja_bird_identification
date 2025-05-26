@@ -101,6 +101,9 @@ if uploaded_file is not None and bird_choice:
 
         time_axis = np.arange(len(probabilities[0]))
 
+        y_min = max(0, np.min(probabilities) - 0.05)
+        y_max = min(1, np.max(probabilities) + 0.05)
+
         fig, ax = plt.subplots()
         ax.plot(time_axis, probabilities[0], label=f"{bird} Probability", color='green')
         ax.set_xlabel("Time (seconds)")
