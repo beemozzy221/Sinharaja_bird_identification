@@ -23,8 +23,8 @@ def conv_layer (filter_sizes, dropout_rate):
     for filter_size in filter_sizes:
         conv_layers.append(Conv2D(filters=filter_size, kernel_size=3,
                                   activation='relu', padding='same'))
-        conv_layers.append(AveragePooling2D(pool_size=(1, 4),
-                         strides=(1, 4), padding="same"))
+        conv_layers.append(AveragePooling2D(pool_size=(2, 4),
+                         strides=(2, 4), padding="same"))
         conv_layers.append(Dropout(dropout_rate))
 
     return keras.Sequential(conv_layers)
