@@ -56,7 +56,7 @@ if uploaded_file is not None and bird_choice:
     if st.checkbox("Generate spectrogram?"):
         # Load audio
         spec_data, spec_sr = waveletdecomp.read_audio_files(uploaded_file)
-
+        print(spec_data.shape)
         # Generate spectrogram
         st.write("Spectrogram:")
         fig, ax = plt.subplots()
