@@ -56,15 +56,12 @@ class BirdNet(keras.Model):
         _, conv_features_, conv_coeffs_, conv_channels_ = conv_shape
 
         node_inputs = ops.reshape(
-            x1, (batch_size, time_steps, conv_features_, conv_coeffs_ * conv_channels_)
+            x1, (batch_size, time_steps, conv_features_ * conv_coeffs_ * conv_channels_)
         )
+        x2 = self.postprocessor(node_inputs)
+        x3 = self.lstm_layers(x2)
 
-        x2 = self.node_selector(node_inputs)
-        x3 = ops.reshape(x2, (batch_size, time_steps, features))
-        x4 = self.lstm_layers(x3)
-
-        return self.compute_logits(x4)
-
+        return self.compute_logits(x3)
     def build(self, input_shape):
         super(BirdNet, self).build(input_shape)
 
