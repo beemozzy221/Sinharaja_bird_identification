@@ -105,7 +105,7 @@ def energyinfowavelets(coefficients):
 def waveletdecomp_interface(uploaded_file, sr):
     # Read as byte stream and decode with soundfile
     data, samplerate = sf.read(io.BytesIO(uploaded_file.read()))
-
+    data = ensure_samples_channels(data)
     # Optional: resample using librosa
     if samplerate != sr:
         data = librosa.resample(data.T, orig_sr=samplerate, target_sr=sr)
