@@ -103,4 +103,4 @@ plt.show()
 
 #Identification
 for time, prob in enumerate(results[0]):
-    print(f"Present in {time}") if prob > 0.8 else print("None")
+    print(f"Present in {time}") if prob > 0.8 else print(f"None, {prob}")
