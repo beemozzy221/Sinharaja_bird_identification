@@ -123,7 +123,7 @@ def waveletdecomp_interface(uploaded_file, sr):
         data = librosa.resample(data.T, orig_sr=samplerate, target_sr=sr)
         print(f"Resampled from {samplerate} to {sr}")
         samplerate = sr
-
+    data = ensure_samples_channels(data)
     print(f"shape = {data.shape}")
 
     # Stereo ignorance
