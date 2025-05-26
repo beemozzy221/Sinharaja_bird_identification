@@ -106,7 +106,7 @@ if uploaded_file is not None and bird_choice:
         ax.set_xlabel("Time (seconds)")
         ax.set_ylabel("Probability")
         ax.set_title(f"Probability of {bird.capitalize()} over Time")
-        ax.set_ylim([0, 1])
+        ax.set_ylim([y_min, y_max])
         ax.grid(True)
         st.pyplot(fig)
 
