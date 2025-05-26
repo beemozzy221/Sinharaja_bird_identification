@@ -87,6 +87,19 @@ def savecoeinnumpyz(coefficients):
     np.savez("wavelet_coefficients.npz", **coefficients)
     print("Wavelet packets saved.")
 
+def ensure_samples_channels(audio):
+    if audio.ndim == 1:
+        print("Audio on correct format.")
+        # Mono audio
+        return audio[:, None]
+
+    elif audio.shape[0] <= 4:  # usually means (channels, samples)
+        print("Transposing.......")
+        return audio.T
+    print("Audio on correct format.")
+
+    return audio
+
 def savenumpy(file_path, data):
     np.save(file_path, data)
     print(f"Saved successfully at {file_path}!")
