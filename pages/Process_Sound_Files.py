@@ -100,7 +100,6 @@ if uploaded_file is not None and bird_choice:
             probabilities = 1 / (1 + np.exp(-probabilities))
 
         time_axis = np.arange(len(probabilities[0]))
-        print(probabilities)
 
         fig, ax = plt.subplots()
         ax.plot(time_axis, probabilities[0], label=f"{bird} Probability", color='green')
