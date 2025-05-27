@@ -75,6 +75,7 @@ if uploaded_file is not None and bird_choice:
     print(f"Loaded audio information: {audio.shape}")
     audio_data = predict_format(audio)
     print(f"Loaded and formatted audio. Audio shape: {audio_data.shape}")
+    uploaded_file.seek(0)
 
     # Predict for each bird
     for bird in bird_choice:
