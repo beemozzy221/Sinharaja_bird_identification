@@ -141,7 +141,7 @@ def waveletdecomp_interface(uploaded_file, sr):
     return segmentwavfile(data, length)
 
 def read_audio_files(audio_file):
-    return sf.read(audio_file)
+    return sf.read(io.BytesIO(audio_file))
 
 
 
