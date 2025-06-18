@@ -127,6 +127,9 @@ if uploaded_file is not None and bird_choice:
         print(f"Loaded model with {weights_path}")
 
         with st.spinner(f"Analyzing for {bird}..."):
+            if audio_data.shape[3] > dummy_input.shape[3]:
+                audio_data = audio_data[:, :, :, :dummy_input.shape[3], :]
+
             probabilities = model.predict(audio_data)
             probabilities = 1 / (1 + np.exp(-probabilities))
 
