@@ -36,13 +36,10 @@ class BirdNet(keras.Model):
         self.dropout_rate = dropout_rate
         self.filter_sizes = filter_size
         self.lstm_hidden_units = lstm_hidden_units
-        self.node_selector = Dense(1, activation="sigmoid")
         self.lstm_layers = lstm_layer(lstm_hidden_units)
-        self.flatten = Flatten()
         self.postprocessor = feed_forward(hidden_units, dropout_rate)
         self.conv = conv_layer(filter_size, dropout_rate)
         self.compute_logits = Dense(1)
-        self.bs_dense = Dense(64)
 
     def call(self, inputs):
         input_shape = ops.shape(inputs)
