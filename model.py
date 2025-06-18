@@ -1,6 +1,6 @@
 import keras
 from keras.src import ops
-from keras.src.layers import Dense, Dropout, LSTM, Flatten, Conv2D, AveragePooling2D
+from keras.src.layers import Dense, Dropout, LSTM, Conv2D, AveragePooling2D
 
 
 def feed_forward (hidden_units,dropout_rate):
