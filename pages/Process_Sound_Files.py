@@ -99,7 +99,7 @@ if uploaded_file is not None and bird_choice:
 
         # Compile the model and load weights
         dummy_input = np.random.random((1, 203, 32, 1437, 1))
-        model(audio_data)
+        model(dummy_input)
 
         for layer in model.layers:
             new_weights = []
