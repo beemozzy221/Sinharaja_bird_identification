@@ -79,6 +79,7 @@ if uploaded_file is not None and bird_choice:
     # Predict for each bird
     for bird in bird_choice:
         st.markdown(f"### 🐤 {bird.capitalize()}")
+        weights_path = os.path.join("weights_npy", bird)
 
         # Initialize the model
         model = model.BirdNet(
@@ -89,10 +90,42 @@ if uploaded_file is not None and bird_choice:
             name=f'{bird}filter'
         )
 
+        weights_dict = {}
+        for files in sorted(os.listdir(weights_path)):
+            weights_dict[files] = []
+            for trained_model in sorted(os.listdir(os.path.join(weights_path, files))):
+                loaded_pieces = np.load(os.path.join(weights_path, files, trained_model))
+                weights_dict[files].append(loaded_pieces)
+
         # Compile the model and load weights
-        model.build(audio_data.shape)
-        weights_path = os.path.join(mpr, WEIGHTS_DIR, f"{bird}.h5")
-        model.load_weights(weights_path)
+        dummy_input = np.random.random((1, 66, 32, 1437, 1))
+        model(dummy_input)
+
+        for layer in model.layers:
+            new_weights = []
+
+            for weights in layer.weights:
+                print(f"{layer.name} | {weights.name}")
+                if weights.name == "kernel":
+                    new_weights.append(weights_dict[layer.name][1])
+                    print(f"Expected: {weights.shape} Received: {weights_dict[layer.name][1].shape}")
+                    weights_dict[layer.name].pop(1)
+                elif weights.name == "bias":
+                    new_weights.append(weights_dict[layer.name][0])
+                    print(f"Expected: {weights.shape} Received: {weights_dict[layer.name][0].shape}")
+                    weights_dict[layer.name].pop(0)
+                elif weights.name == "recurrent_kernel":
+                    new_weights.append(weights_dict[layer.name][1])
+                    print(f"Expected: {weights.shape} Received: {weights_dict[layer.name][1].shape}")
+                    weights_dict[layer.name].pop(1)
+
+            # Set the weights
+            layer.set_weights(new_weights)
+
+        # Get summary
+        model.summary()
+        # Test predict
+        results = model.predict(dummy_input)
 
         print(f"Loaded model with {weights_path}")
 
