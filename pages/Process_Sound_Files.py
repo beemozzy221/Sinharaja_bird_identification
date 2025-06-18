@@ -98,8 +98,7 @@ if uploaded_file is not None and bird_choice:
                 weights_dict[files].append(loaded_pieces)
 
         # Compile the model and load weights
-        dummy_input = np.random.random((1, 66, 32, 1437, 1))
-        model(dummy_input)
+        model(audio_data)
 
         for layer in model.layers:
             new_weights = []
