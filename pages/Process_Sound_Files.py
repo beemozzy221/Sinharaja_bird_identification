@@ -129,6 +129,11 @@ if uploaded_file is not None and bird_choice:
         with st.spinner(f"Analyzing for {bird}..."):
             if audio_data.shape[3] > dummy_input.shape[3]:
                 audio_data = audio_data[:, :, :, :dummy_input.shape[3], :]
+            # Zero padding, repeat padding option ignored
+            elif audio_data.shape[3] < dummy_input.shape[3]:
+                pad_width = [(0, 0)] * dummy_input.ndim
+                pad_width[3] = (0, dummy_input.shape[3] - audio_data.shape[3])
+                audio_data = np.pad(audio_data, pad_width, mode='constant')
 
             probabilities = model.predict(audio_data)
             probabilities = 1 / (1 + np.exp(-probabilities))
