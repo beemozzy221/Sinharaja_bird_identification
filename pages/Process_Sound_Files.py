@@ -124,7 +124,7 @@ if uploaded_file is not None and bird_choice:
         # Get summary
         model.summary()
         # Test predict
-        results = model.predict(dummy_input)
+        results = model.predict(audio_data)
 
         print(f"Loaded model with {weights_path}")
 
