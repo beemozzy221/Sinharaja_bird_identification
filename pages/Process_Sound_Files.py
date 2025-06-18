@@ -80,7 +80,6 @@ if uploaded_file is not None and bird_choice:
     for bird in bird_choice:
         st.markdown(f"### 🐤 {bird.capitalize()}")
         weights_path = os.path.join("weights_npy", bird)
-        print(weights_path)
 
         # Initialize the model
         model = model.BirdNet(
