@@ -5,7 +5,7 @@ import requests
 #------------ChatGPT generated interface------------
 
 st.set_page_config(
-    page_title="Sinharaja Bird Sound ID",
+    page_title="Janindu Chamod Memorial Sinharaja Bird Sound ID",
     page_icon="🕊️",
     layout="centered"
 )
@@ -24,7 +24,7 @@ forest_anim = load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_w51p
 bird_anim = load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_gjmecwii.json")  # Bird flying animation
 
 # --- Main Interface ---
-st.markdown("<h1 style='text-align: center; color: #2E8B57;'>🕊️ Sinharaja Bird Sound Identification</h1>",
+st.markdown("<h1 style='text-align: center; color: #2E8B57;'>🕊️Janindu Chamod Memorial Sinharaja Bird Sound Identification</h1>",
             unsafe_allow_html=True)
 st.markdown(
     "<h4 style='text-align: center; color: #4F7942;'>A machine learning project to explore the voices of Sinharaja rainforest birds</h4>",
@@ -34,7 +34,7 @@ st_lottie(forest_anim, speed=1, height=250, key="forest")
 
 st.markdown(
     """
-    Welcome to the **Sinharaja Bird Sound Identification** system — an AI-powered tool designed to identify bird species based on their songs and calls, recorded deep within the lush Sinharaja rainforest of Sri Lanka.
+    Welcome to the **Janindu Chamod Memorial Sinharaja Bird Sound Identification** system — an AI-powered tool designed to identify bird species based on their songs and calls, recorded deep within the lush Sinharaja rainforest of Sri Lanka.
 
     With the help of bioacoustic analysis and deep learning, this platform supports both citizen scientists and researchers in managing and understanding bird audio data.
     """
