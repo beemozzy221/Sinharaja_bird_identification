@@ -34,7 +34,7 @@ st_lottie(forest_anim, speed=1, height=250, key="forest")
 
 st.markdown(
     """
-    Welcome to the **Janindu Chamod Memorial Sinharaja Bird Sound Identification** system — an AI-powered tool designed to identify bird species based on their songs and calls, recorded deep within the lush Sinharaja rainforest of Sri Lanka.
+    Welcome to the **Janindu Memorial Sinharaja Bird Sound Identification** system — an AI-powered tool designed to identify bird species based on their songs and calls, recorded deep within the lush Sinharaja rainforest of Sri Lanka.
 
     With the help of bioacoustic analysis and deep learning, this platform supports both citizen scientists and researchers in managing and understanding bird audio data.
     """
